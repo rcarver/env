@@ -1,0 +1,108 @@
+# This is my ZSH init script. It is as simple as possible, and intends to fit
+# comfortably in one file. If a single section is very complex and/or verbose
+# such that it distracts from the rest of the file, it may be extracted to
+# complex/*.zsh and sourced from here. However, prefer everything to be in one
+# place over unnecessary organization.
+
+if [ -s $HOME/.envpath ]
+then
+  export ENV=$(cat $HOME/.envpath)
+else
+  echo Not configuring the env because $HOME/.envpath does not exist.
+  echo You probably need to run setup.sh
+  return
+fi
+
+
+# basics
+# =============================================================================
+
+# Setup editors.
+export EDITOR='mvim'
+export GIT_EDITOR='vim -c start'
+
+# Add env/bin to path so our standard utils are available.
+export PATH=$PATH:$ENV/bin
+
+# Add ~/bin to path so you can stash new things there for convenience.
+export PATH=$PATH:$HOME/bin
+
+# Source a local config that isn't part of this environment. This can be used
+# to customize a machine, or store secret stuff that you don't want to check in.
+test -s ~/.localrc && source ~/.localrc
+
+
+# autocomplete
+# =============================================================================
+
+# Initialize autocomplete.
+autoload -U compinit
+compinit
+
+# Add completion scripts.
+fpath=($ENV/completion $fpath)
+
+# Matches case insensitive for lowercase.
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+# Pasting with tabs doesn't perform completion.
+zstyle ':completion:*' insert-tab pending
+
+
+# zsh hooks
+# http://zsh.sourceforge.net/Doc/Release/Functions.html
+# =============================================================================
+
+precmd() {
+  update_prompt
+}
+
+
+# prompt
+# http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
+# =============================================================================
+
+source $ENV/complex/prompt.zsh
+
+update_prompt() {
+  set_title
+  set_prompt
+}
+
+
+# colors
+# =============================================================================
+
+# Colorize ls.
+alias ls="gls -F --color"
+alias l="gls -lAh --color"
+alias ll="gls -l --color"
+alias la='gls -A --color'
+
+# Colorize other common utils.
+source `brew --prefix`/etc/grc.bashrc
+
+
+# git
+# =============================================================================
+
+# Define git shortcuts.
+alias gap='git add --patch'
+alias gp='git push origin HEAD'
+alias gd='git diff'
+alias gdp='git diff --cached'
+alias gc='git commit'
+alias gb='git branch'
+alias gs='git status -sb' # upgrade your git if -sb breaks for you. it's fun.
+
+# Autocompletion for git commands.
+git_completion=/usr/local/etc/bash_completion.d/git-completion.bash
+test -s $git_completion && source $git_completion
+
+
+# projects
+# =============================================================================
+
+# This is where I put all of my code. This supports the `c` script for
+# moving to projects so you can `c [tab]` and jump.
+export PROJECTS=~/Code

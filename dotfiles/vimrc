@@ -1,0 +1,339 @@
+set nocompatible " Be VIM
+
+" .vimrc files I have found useful.
+" https://github.com/spf13/spf13-vim/blob/3.0/.vimrc
+" https://github.com/fatih/dotfiles/blob/master/vimrc
+"
+" More learning.
+" http://learnvimscriptthehardway.stevelosh.com/
+
+"
+" Vundle - vim plugin manager
+" https://github.com/gmarik/Vundle.vim
+"
+" To install more, add a 'Plugin' line and run `:PluginInstall`
+
+filetype off
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
+
+"
+" My Plugins
+"
+" Get more plugins.
+" http://vimawesome.com/
+"
+" keep sorted with `:!sort -f`
+" Save, `source %` then `:PluginInstall`
+"
+
+Plugin 'Raimondi/delimitMate'
+Plugin 'SirVer/ultisnips'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'bling/vim-airline'
+Plugin 'ervandew/supertab'
+Plugin 'fatih/vim-go'
+Plugin 'kien/ctrlp.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'mileszs/ack.vim'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+
+call vundle#end()
+
+
+"
+" Settings
+"
+
+filetype plugin indent on       " Enable filetype plugins and indents
+syntax enable                   " Enable syntax highlighting
+
+set background=light
+colorscheme solarized
+
+set noerrorbells                " No beeps
+set number                      " Show line numbers
+set ruler                       " Show line and column number
+set backspace=indent,eol,start  " Makes backspace key more powerful.
+set showcmd                     " Show me what I'm typing
+set showmode                    " Show current mode.
+
+set noswapfile                  " Don't use swapfile
+set nobackup            	      " Don't create annoying backup files
+set splitright                  " Split vertical windows right to the current windows
+set splitbelow                  " Split horizontal windows below to the current windows
+set encoding=utf-8              " Set default encoding to UTF-8
+set autowrite                   " Automatically save before :next, :make etc.
+set autoread                    " Automatically reread changed files without asking me anything
+
+set laststatus=2                " Always show a status bar
+
+set fileformats=unix,dos,mac    " Prefer Unix over Windows over OS 9 formats
+
+set incsearch                   " Shows the match while typing
+set hlsearch                    " Highlight found searches
+set ignorecase                  " Search case insensitive...
+set smartcase                   " ... but not when search pattern contains upper case characters
+
+set nowrap                      " don't wrap lines
+set tabstop=2                   " a tab is two spaces
+set shiftwidth=2                " an autoindent (with <<) is two spaces
+set expandtab                   " use spaces, not tabs
+set nolist                        " Show invisible characters
+
+let mapleader=","               " Use comma as the leader
+
+"
+" GUI Settings
+"
+
+if has("gui_running")
+
+  " Automatically resize splits when resizing MacVim window
+  autocmd VimResized * wincmd =
+
+  " Use some transaprency
+  set transparency=1
+
+  " Customize the GUI
+  set guioptions=aAce
+
+  " Use the best font
+  if has("gui_macvim")
+    set guifont=Source\ Code\ Pro:h12
+    set linespace=1
+    set antialias
+    "set guifont=Monaco:h10
+    "set noantialias
+  end
+endif
+
+
+"
+" File Type Settings
+"
+" http://tedlogan.com/techblog3.html
+" ts   = tabstop     - number of spaces that a tab counts for
+" et   = expandtab   - tabs become spaces (noet is tabs are tabs)
+" sw   = shiftwitch  - number of spaces to use for indent
+" sts  = softtabstop - how many spaces are used when you hit tab
+
+au BufNewFile,BufRead *.go  set ft=go
+au BufNewFile,BufRead *.md  set ft=markdown
+
+au FileType md        setlocal et   ts=2 sw=2 sts=2
+au FileType go        setlocal noet ts=8 sw=8 sts=8
+
+
+"
+" Commands
+"
+
+" Yank to the end of a line - make Y consistent with C and D.
+noremap Y y$
+
+" Stamping - replace current word with last yank.
+noremap S "_diwP
+
+" Return switches between the last two buffers
+nnoremap <CR> <C-^>
+
+" Tab / Shift-Tab to cycle through buffers without saving
+noremap <Tab> :bnext!<CR>
+noremap <S-Tab> :bprevious!<CR>
+
+function! TrimWhiteSpace()
+  %s/\s*$//
+  ''
+:endfunction
+
+" leader-s to trim trailing whitespace
+map <leader>s :call TrimWhiteSpace()<CR>:w<CR>
+
+
+
+"
+" Plugins
+"
+
+" =================================================================
+" NERDTree - file browser
+" https://github.com/scrooloose/nerdtree
+" =================================================================
+
+" Ignore common generated files
+" let NERDTreeIgnore=['\.pyc$', '\.pyo$', '\.rbc$', '\.rbo$', '\.class$', '\.o$', '\~$']
+
+" Show/hide the file browser
+map <C-n> :NERDTreeToggle<CR>
+
+
+" =================================================================
+" NERDCommenter - commenting
+" https://github.com/scrooloose/nerdcommenter
+" =================================================================
+
+" =================================================================
+" CtrlP - fuzzy file search
+" https://github.com/kien/ctrlp.vim
+" =================================================================
+
+" command-t to start file search
+nnoremap <d-t> :CtrlP<CR>
+" ctrl-p to start file search
+" ctrl-o to start buffer search
+nnoremap <c-o> :CtrlPBuffer<CR>
+
+
+" =================================================================
+" Syntastic - syntax checker
+" http://vimawesome.com/plugin/syntastic
+" =================================================================
+
+" Always put errors into the location-list
+let g:syntastic_always_populate_loc_list = 1
+" Automatically open/close the location-list
+let g:syntastic_auto_loc_list = 1
+" Don't check when you open a file. Handy, but too slow.
+let g:syntastic_check_on_open = 0
+" Don't check when you quit
+let g:syntastic_check_on_wq = 0
+" Jump to the first error
+let g:syntastic_auto_jump = 1
+
+" Move through the location-list.
+noremap <C-j> :lnext<CR>
+noremap <C-k> :lprev<CR>
+
+
+" =================================================================
+" Solarized - color scheme
+" https://github.com/altercation/vim-colors-solarized
+" =================================================================
+
+let g:solarized_italic=0
+let g:solarized_contrast="normal"
+let g:solarized_visibility="normal"
+
+
+" =================================================================
+" vim-airline - fancy status line
+" https://github.com/bling/vim-airline
+" =================================================================
+
+
+" =================================================================
+" SuperTab - improve behavior of tab.
+" https://github.com/ervandew/supertab
+" =================================================================
+
+" How to make UltiSnips and YCM play together with the <TAB> key.
+" http://0x3f.org/blog/make-youcompleteme-ultisnips-compatible/
+let g:SuperTabDefaultCompletionType = '<C-Tab>'
+
+
+" =================================================================
+" YouCompleteMe - autocomplete
+" https://github.com/Valloric/YouCompleteMe
+" =================================================================
+
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_min_num_of_chars_for_completion = 1
+" Map completions to SuperTab for better behavior.
+let g:ycm_key_list_select_completion = ['<C-TAB>']
+let g:ycm_key_list_previous_completion = ['<C-S-TAB>']
+
+
+" =================================================================
+" UtilSnips - snippets
+" https://github.com/SirVer/ultisnips
+" =================================================================
+
+" TextMate-like snippets use <TAB> to move through.
+let g:UltiSnipsExpandTrigger="<TAB>"
+let g:UltiSnipsJumpForwardTrigger="<TAB>"
+let g:UltiSnipsJumpBackwardTrigger="<S-TAB>"
+
+
+" =================================================================
+" DelimitMate - auto pair parens, quotes, etc
+" https://github.com/Raimondi/delimitMate
+" =================================================================
+
+" Magic happens when you type paired characters.
+
+
+" =================================================================
+" Ack - searching
+" https://github.com/mileszs/ack.vim
+" =================================================================
+" LAck puts results in location-list instead of quickfix.
+
+let g:ack_default_options = " -s -H --nocolor --nogroup --column --ignore-dir=log --ignore-dir=db --ignore-dir=vendor"
+
+" Perform a search - <ctrl-f>
+noremap <C-f> :Ack<space>
+" Perform a search - <command-shift-f>
+noremap <D-F> :Ack<space>
+" Visual mode: Perform a search for the current visual selection.
+vnoremap <leader>w y:Ack<space><c-r>"<cr>
+" Normal mode: Perform a search for the word under the cursor.
+nnoremap <leader>w ye:Ack<space><c-r>"<cr>
+
+
+" =================================================================
+" TagBar - source code outlines
+" https://github.com/majutsushi/tagbar
+" =================================================================
+
+" Show and hide the tag pane
+nmap <leader>e :TagbarToggle<CR>
+
+" =================================================================
+" vim-go - complete golang environment
+" https://github.com/fatih/vim-go
+" =================================================================
+
+" gofmt + automatic imports
+let g:go_fmt_command = "goimports"
+" Don't show errors when gofmt fails
+let g:go_fmt_fail_silently = 1
+" Better, but currently flakey way to use gofmt
+let g:go_fmt_experimental = 0
+" Show info about the item under the cursor
+let g:go_auto_type_info = 1
+" :GoInstallBinaries puts things here. Global so it's not tied to the project.
+let g:go_bin_path = expand("~/.gotools")
+
+" Run the current file
+au FileType go nmap <leader>r <Plug>(go-run)
+" Build the current file (creates no artifact)
+au FileType go nmap <leader>b <Plug>(go-build)
+" Run tests for the current file
+au FileType go nmap <leader>t <Plug>(go-test)
+" Run coverage report
+au FileType go nmap <leader>c <Plug>(go-coverage)
+
+" View GoDoc for item under cursor
+au FileType go nmap <Leader>d <Plug>(go-doc-vertical)
+au FileType go nmap <Leader>db <Plug>(go-doc-browser)
+
+" Jump to definition for item under cursor
+au FileType go nmap gd <Plug>(go-def)
+" View definition of item under cursor in vertical split
+au FileType go nmap <Leader>ds <Plug>(go-def-vertical)
+
+" Rename the identifier under the cursor
+" :GoRename
+
+" Manage go binaries
+" :GoInstallBinaries
+" :GoUpdateBinaries
+
+
