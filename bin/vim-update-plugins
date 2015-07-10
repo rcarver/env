@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# This script sets up vim with Vundle and its plugins.
+
+set -e
+
+bundle=$HOME/.vim/bundle
+vundle=$bundle/Vundle.vim
+
+# Install Vundle, a package manager for vim.
+if [ ! -d $bundle ]
+then
+  mkdir -p $bundle
+  git clone https://github.com/gmarik/Vundle.vim.git $vundle
+fi
+
+# Update Vundle
+cd $vundle && git pull
+
+# cmake is required for YouCompleteMe
+brew install cmake
+
+# Install Plugins.
+mvim -f -c PluginInstall -c qall
+
+# Compile YouCompleteMe
+cd $bundle/YouCompleteMe && \
+  git submodule update --init --recursive && \
+  ./install.sh --gocode-completer

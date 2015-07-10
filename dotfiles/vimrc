@@ -335,5 +335,3 @@ au FileType go nmap <Leader>ds <Plug>(go-def-vertical)
 " Manage go binaries
 " :GoInstallBinaries
 " :GoUpdateBinaries
-
-

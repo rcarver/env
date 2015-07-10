@@ -1,4 +1,8 @@
 #!/bin/bash
+#
+# This script sets up an OSX machine for my general happiness. Everything is
+# idempotent, so it's safe to run repeatedly.
+#
 
 # Abort on error.
 set -e
@@ -7,70 +11,61 @@ set -e
 ENV="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Write the location of this repo to ~/.envpath so that other scripts can find it.
-echo Writing ~/.envpath with $ENV
+echo ~/.envpath = \"$ENV\"
 echo "$ENV" > "$HOME/.envpath"
 
-
-echo Running setup...
-
-# This script sets up an OSX machine for my general happiness. Everything is
-# idempotent, so it's safe to run repeatedly.
 
 # Make sure OSX is configured nicely.
 $ENV/bin/env-osx-defaults
 
 # Install Homebrew, a package manager for OSX we'll use to get other stuff.
 # http://brew.sh
-if hash brew 2> /dev/null
+if not hash brew 2> /dev/null
 then
-  echo homebrew is installed
-else
   echo Installing homebrew...
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
 # Install coreutils, providing better versions of common unix utilities.
 # https://www.gnu.org/software/coreutils/manual/html_node/
-if hash gls 2> /dev/null
+if not hash gls 2> /dev/null
 then
-  echo coreutils is installed
-else
   echo Installing coreutils...
   brew install coreutils
 fi
 
 # Install grc, the generic colorizer for nice colors on a bunch of common utils.
 # https://github.com/garabik/grc
-if hash grc 2> /dev/null
+if not hash grc 2> /dev/null
 then
-  echo grc is installed
-else
   echo Installing grc...
   brew install grc
 fi
 
-# Install macvim.
-if hash mvim 2> /dev/null
+# Install macvim, a pretty solid text editor.
+if not hash mvim 2> /dev/null
 then
-  echo macvim is installed
-else
+  echo Installing macvim...
   brew install macvim
   brew linkapps macvim
+  ln -s /usr/local/bin/mvim /usr/local/bin/vim
 fi
 
 # Configure other systems by symlinking dotfiles from this repo.
-echo Installing dotfiles...
 for source in `find "$ENV/dotfiles" -type f`
 do
   dest="$HOME/.`basename \"${source}\"`"
+  # If it's a symblink and points to the source, we're good.
   if [ -L "$dest" ] && [ "$(readlink "$dest")" == "$source" ]
   then
-    echo "$dest is linked"
+    continue
+  # But if it's a file, then leave it but warn the user.
   elif [ -f "$dest" ]
   then
     echo "$dest exists, but is not the file provided by env"
+  # Else create a symlink.
   else
-    echo "linking $source to $dest"
+    echo "Linking $source to $dest"
     ln -fs "$source" "$dest"
   fi
 done

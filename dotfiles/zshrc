@@ -22,10 +22,10 @@ export EDITOR='mvim'
 export GIT_EDITOR='vim -c start'
 
 # Add env/bin to path so our standard utils are available.
-export PATH=$PATH:$ENV/bin
+export PATH=$ENV/bin:$PATH
 
 # Add ~/bin to path so you can stash new things there for convenience.
-export PATH=$PATH:$HOME/bin
+export PATH=$HOME/bin:$PATH
 
 # Source a local config that isn't part of this environment. This can be used
 # to customize a machine, or store secret stuff that you don't want to check in.
