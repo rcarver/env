@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # This script sets up vim with Vundle and its plugins.
+# https://github.com/VundleVim/Vundle.vim
 
 set -e
 
@@ -24,6 +25,7 @@ brew install cmake
 mvim -f -c PluginInstall -c qall
 
 # Compile YouCompleteMe
+# https://github.com/Valloric/YouCompleteMe
 cd $bundle/YouCompleteMe && \
   git submodule update --init --recursive && \
   ./install.sh --gocode-completer
