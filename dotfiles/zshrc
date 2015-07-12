@@ -14,10 +14,13 @@ else
 fi
 
 # Edit this config.
-alias eenv='e $ENV'
+alias eenv='e "$ENV"'
+
+# cd to this config.
+alias cenv='cd "$ENV"'
 
 # Reload this config.
-alias reenv='source $ENV'
+alias reenv='source ~/.zshrc'
 
 # Warn if there are any uncommitted changes.
 if [ ! -z "$(cd $ENV && git status --porcelain)" ]; then
