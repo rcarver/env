@@ -13,6 +13,17 @@ else
   return
 fi
 
+# Edit this config.
+alias eenv='e $ENV'
+
+# Reload this config.
+alias reenv='source $ENV'
+
+# Warn if there are any uncommitted changes.
+if [ ! -z "$(cd $ENV && git status --porcelain)" ]; then
+  echo "env is dirty. Please check it in."
+fi
+
 
 # basics
 # =============================================================================
