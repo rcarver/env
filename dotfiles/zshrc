@@ -44,19 +44,20 @@ then
 fi
 
 # zsh options
+# http://linux.die.net/man/1/zshoptions
 # =============================================================================
 
-setopt CORRECT
 setopt APPEND_HISTORY
-setopt INC_APPEND_HISTORY SHARE_HISTORY
+setopt COMPLETE_ALIASES
+setopt CORRECT
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_REDUCE_BLANKS
+setopt INC_APPEND_HISTORY SHARE_HISTORY
 setopt NO_LIST_BEEP
-
-setopt complete_aliases
 
 
 # autocomplete
+# http://zsh.sourceforge.net/Doc/Release/Completion-System.html
 # https://github.com/zsh-users/zsh-completions/blob/master/zsh-completions-howto.org
 # =============================================================================
 
