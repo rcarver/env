@@ -54,7 +54,7 @@ call vundle#end()
 filetype plugin indent on       " Enable filetype plugins and indents
 syntax enable                   " Enable syntax highlighting
 
-set background=light
+set background=dark
 silent! colorscheme solarized   " Set colors, don't error if it's not available.
 
 set noerrorbells                " No beeps
