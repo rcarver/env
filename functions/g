@@ -1,0 +1,15 @@
+#!/bin/zsh
+#
+# g moves around your go path. With no args, g is `cd $GOPATH`. With args (and
+# autocomplete), it moves inside of $GOPATH/src.
+#
+# The result is that you can type `g <tab>` from anywhere and quickly jump to
+# any source code directory.
+
+if [ ! -z "$1" ] && [ -s "$GOPATH/src/$1" ]; then
+  cd "$GOPATH/src/$1"
+elif [ ! -z "$GOPATH" ]; then
+  cd "$GOPATH"
+else
+  echo '$GOPATH is not set'
+fi
