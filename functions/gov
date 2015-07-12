@@ -1,0 +1,4 @@
+#
+# gov installs the go vendor tool.
+#
+go get github.com/kardianos/vendor

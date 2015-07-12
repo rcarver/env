@@ -1,0 +1,5 @@
+#
+# gop sets GOPATH and PATH for a go project at the current dir.
+#
+export GOPATH=`pwd`
+export PATH=$GOPATH/bin:$PATH
