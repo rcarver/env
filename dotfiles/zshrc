@@ -38,10 +38,7 @@ autoload -U $ENV/functions/*(:t)
 fpath=($ENV/functions $fpath)
 
 # Add zsh-completions.
-if [ -d /usr/local/share/zsh-completions ]
-then
-  fpath=(/usr/local/share/zsh-completions $fpath)
-fi
+fpath=(/usr/local/share/zsh-completions $fpath)
 
 # zsh options
 # http://linux.die.net/man/1/zshoptions
@@ -125,10 +122,6 @@ alias gc='git commit'
 alias gb='git branch'
 alias gs='git status -sb' # upgrade your git if -sb breaks for you. it's fun.
 
-# Autocompletion for git commands.
-git_completion=/usr/local/etc/bash_completion.d/git-completion.bash
-test -s $git_completion && source $git_completion
-
 
 # projects
 # =============================================================================
@@ -136,3 +129,5 @@ test -s $git_completion && source $git_completion
 # This is where I put all of my code. This supports the `c` script for
 # moving to projects so you can `c [tab]` and jump.
 export PROJECTS=~/Code
+
+
