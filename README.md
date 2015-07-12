@@ -10,7 +10,7 @@ Install it. It won't overwrite existing dotfiles.
 
     git clone https://github.com/rcarver/env
     cd env
-    ./setup
+    ./setup.sh
 
 Set your shell to `zsh` and you're good to go.
 

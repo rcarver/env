@@ -14,7 +14,6 @@ ENV="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 echo ~/.envpath = \"$ENV\"
 echo "$ENV" > "$HOME/.envpath"
 
-
 # Make sure OSX is configured nicely.
 $ENV/bin/env-osx-defaults
 
@@ -76,4 +75,3 @@ do
   fi
 done
 
-exit 0
