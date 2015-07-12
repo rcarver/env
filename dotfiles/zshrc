@@ -31,22 +31,51 @@ export PATH=$HOME/bin:$PATH
 # to customize a machine, or store secret stuff that you don't want to check in.
 test -s ~/.localrc && source ~/.localrc
 
+# Add my functions.
+autoload -U $ENV/functions/*(:t)
 
-# autocomplete
+# Add my completions.
+fpath=($ENV/functions $fpath)
+
+# Add zsh-completions.
+if [ -d /usr/local/share/zsh-completions ]
+then
+  fpath=(/usr/local/share/zsh-completions $fpath)
+fi
+
+# zsh options
 # =============================================================================
 
-# Initialize autocomplete.
-autoload -U compinit
-compinit
+setopt CORRECT
+setopt APPEND_HISTORY
+setopt INC_APPEND_HISTORY SHARE_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_REDUCE_BLANKS
+setopt NO_LIST_BEEP
 
-# Add completion scripts.
-fpath=($ENV/completion $fpath)
+setopt complete_aliases
+
+
+# autocomplete
+# https://github.com/zsh-users/zsh-completions/blob/master/zsh-completions-howto.org
+# =============================================================================
+
+# Verbose output when using autocomplete.
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*:descriptions' format '%B%d%b'
+zstyle ':completion:*:messages' format '%d'
+zstyle ':completion:*:warnings' format 'No matches for: %d'
+zstyle ':completion:*' group-name ”
 
 # Matches case insensitive for lowercase.
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 # Pasting with tabs doesn't perform completion.
 zstyle ':completion:*' insert-tab pending
+
+# Initialize autocomplete.
+autoload -U compinit
+compinit
 
 
 # zsh hooks

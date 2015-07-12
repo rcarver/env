@@ -51,6 +51,12 @@ then
   ln -s /usr/local/bin/mvim /usr/local/bin/vim
 fi
 
+if [ ! -d /usr/local/share/zsh-completions ]
+then
+  echo Installing zsh-completions...
+  brew install zsh-completions
+fi
+
 # Configure other systems by symlinking dotfiles from this repo.
 for source in `find "$ENV/dotfiles" -type f`
 do
