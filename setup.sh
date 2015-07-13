@@ -54,7 +54,21 @@ fi
 if ! hash ack 2> /dev/null
 then
   echo Installing ack...
-  brew install ack
+  brew install ack...
+fi
+
+# Install jq for json parsing
+if ! hash jq 2> /dev/null
+then
+  echo Installing jq
+  brew install jq...
+fi
+
+# Install jsonpp for json printing
+if ! hash jsonpp 2> /dev/null
+then
+  echo Installing jsonpp...
+  brew install jsonpp
 fi
 
 # Install zsh-completions for general magic.
