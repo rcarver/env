@@ -19,7 +19,7 @@ $ENV/bin/env-osx-defaults
 
 # Install Homebrew, a package manager for OSX we'll use to get other stuff.
 # http://brew.sh
-if not hash brew 2> /dev/null
+if ! hash brew 2> /dev/null
 then
   echo Installing homebrew...
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -27,7 +27,7 @@ fi
 
 # Install coreutils, providing better versions of common unix utilities.
 # https://www.gnu.org/software/coreutils/manual/html_node/
-if not hash gls 2> /dev/null
+if ! hash gls 2> /dev/null
 then
   echo Installing coreutils...
   brew install coreutils
