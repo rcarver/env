@@ -2,6 +2,8 @@
 # gotools installs common tools for go projects.
 #
 go get github.com/kardianos/vendor
+go install github.com/golang/lint/golint
+
 # go vet
 # go lint
 # others?
