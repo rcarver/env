@@ -35,21 +35,29 @@ fi
 
 # Install grc, the generic colorizer for nice colors on a bunch of common utils.
 # https://github.com/garabik/grc
-if not hash grc 2> /dev/null
+if ! hash grc 2> /dev/null
 then
   echo Installing grc...
   brew install grc
 fi
 
 # Install macvim, a pretty solid text editor.
-if not hash mvim 2> /dev/null
+if ! hash mvim 2> /dev/null
 then
   echo Installing macvim...
-  brew install macvim
+  brew install macvim --override-local-vim
   brew linkapps macvim
-  ln -s /usr/local/bin/mvim /usr/local/bin/vim
+  #ln -s /usr/local/bin/mvim /usr/local/bin/vim
 fi
 
+# Install ack, for searching.
+if ! hash ack 2> /dev/null
+then
+  echo Installing ack...
+  brew install ack
+fi
+
+# Install zsh-completions for general magic.
 if [ ! -d /usr/local/share/zsh-completions ]
 then
   echo Installing zsh-completions...
