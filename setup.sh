@@ -47,7 +47,13 @@ then
   echo Installing macvim...
   brew install macvim --override-local-vim
   brew linkapps macvim
-  #ln -s /usr/local/bin/mvim /usr/local/bin/vim
+fi
+
+# Install ctags for vim.
+if ! hash ctags 2> /dev/null
+then
+  echo Installing ctags
+  brew install ctags
 fi
 
 # Install ack, for searching.
