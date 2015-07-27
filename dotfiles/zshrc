@@ -14,7 +14,7 @@ else
 fi
 
 # Edit this config.
-alias eenv='e "$ENV"'
+alias eenv='cd "$ENV" && e'
 
 # cd to this config.
 alias cenv='cd "$ENV"'
