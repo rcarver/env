@@ -9,7 +9,7 @@
 if [ ! -z "$1" ] && [ -s "$GOPATH/src/$1" ]; then
   cd "$GOPATH/src/$1"
 elif [ ! -z "$GOPATH" ]; then
-  cd "$GOPATH"
+  # Do nothing if there's no arg.
 else
   echo '$GOPATH is not set'
 fi
