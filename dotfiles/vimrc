@@ -311,6 +311,13 @@ let g:go_auto_type_info = 1
 " :GoInstallBinaries puts things here. Global so it's not tied to the project.
 let g:go_bin_path = expand("~/.gotools")
 
+" Highlight all the things.
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+
 " Run the current file
 au FileType go nmap <leader>r <Plug>(go-run)
 " Build the current file (creates no artifact)
@@ -327,7 +334,10 @@ au FileType go nmap <Leader>db <Plug>(go-doc-browser)
 " Jump to definition for item under cursor
 au FileType go nmap gd <Plug>(go-def)
 " View definition of item under cursor in vertical split
-au FileType go nmap <Leader>ds <Plug>(go-def-vertical)
+au FileType go nmap gs <Plug>(go-def-vertical)
+
+" Show interfaces implemented by item under cursor.
+au FileType go nmap <Leader>s <Plug>(go-implements)
 
 " Rename the identifier under the cursor
 " :GoRename
