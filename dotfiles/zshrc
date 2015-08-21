@@ -141,6 +141,14 @@ alias gb='git branch'
 alias gs='git status -sb' # upgrade your git if -sb breaks for you. it's fun.
 
 
+# golang
+# =============================================================================
+
+# Enable experimental vendoring in GO 1.5
+# https://docs.google.com/document/d/1Bz5-UB7g2uPBdOx-rw5t9MxJwkfpx90cqG9AFL0JAYo/edit
+GO15VENDOREXPERIMENT=1
+
+
 # projects
 # =============================================================================
 
