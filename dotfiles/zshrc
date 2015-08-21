@@ -89,6 +89,10 @@ zstyle ':completion:*' insert-tab pending
 autoload -U compinit
 compinit
 
+# custom autocomplete
+# =============================================================================
+
+test -f /usr/local/share/zsh/site-functions/_aws && source /usr/local/share/zsh/site-functions/_aws
 
 # zsh hooks
 # http://zsh.sourceforge.net/Doc/Release/Functions.html

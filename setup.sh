@@ -49,6 +49,13 @@ then
   brew linkapps macvim
 fi
 
+# Install aws tools.
+if ! hash aws 2> /dev/null
+then
+  echo Installing aws
+  brew install aws
+fi
+
 # Install ctags for vim.
 if ! hash ctags 2> /dev/null
 then
