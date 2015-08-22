@@ -49,6 +49,12 @@ then
   brew linkapps macvim
 fi
 
+if ! test -d ~/.vim/bundle/Vundle.vim
+then
+  echo Installing vundle...
+  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+fi
+
 # Install aws tools.
 if ! hash aws 2> /dev/null
 then
