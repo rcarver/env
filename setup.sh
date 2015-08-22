@@ -53,7 +53,7 @@ fi
 if ! hash aws 2> /dev/null
 then
   echo Installing aws
-  brew install aws
+  brew install awscli
 fi
 
 # Install ctags for vim.
@@ -67,14 +67,14 @@ fi
 if ! hash ack 2> /dev/null
 then
   echo Installing ack...
-  brew install ack...
+  brew install ack
 fi
 
 # Install jq for json parsing
 if ! hash jq 2> /dev/null
 then
-  echo Installing jq
-  brew install jq...
+  echo Installing jq...
+  brew install jq
 fi
 
 # Install jsonpp for json printing
