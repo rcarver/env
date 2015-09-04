@@ -48,6 +48,17 @@ call vundle#end()
 
 
 "
+" Add $ENVPATH/vim to the runtime path so you can define behavior there.
+"
+
+" ENV_RTP is where customizations that can't be stored in this file are found.
+let ENV_RTP=$ENVPATH . '/vim'
+
+" Add ENV_RTP to the runtime path.
+let &rtp=ENV_RTP.','.&rtp
+
+
+"
 " Settings
 "
 
@@ -259,6 +270,7 @@ let g:ycm_key_list_previous_completion = ['<C-S-TAB>']
 let g:UltiSnipsExpandTrigger="<TAB>"
 let g:UltiSnipsJumpForwardTrigger="<TAB>"
 let g:UltiSnipsJumpBackwardTrigger="<S-TAB>"
+let g:UltiSnipsSnippetsDir=ENV_RTP . '/UltiSnips'
 
 
 " =================================================================

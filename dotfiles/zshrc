@@ -6,7 +6,7 @@
 
 if [ -s $HOME/.envpath ]
 then
-  export ENV=$(cat $HOME/.envpath)
+  export ENVPATH=$(cat $HOME/.envpath)
 else
   echo Not configuring the env because $HOME/.envpath does not exist.
   echo You probably need to run setup.sh
@@ -14,16 +14,16 @@ else
 fi
 
 # Edit this config.
-alias eenv='cd "$ENV" && e'
+alias eenv='cd "$ENVPATH" && e'
 
 # cd to this config.
-alias cenv='cd "$ENV"'
+alias cenv='cd "$ENVPATH"'
 
 # Reload this config.
 alias reenv='source ~/.zshrc'
 
 # Warn if there are any uncommitted changes.
-if [ ! -z "$(cd $ENV && git status --porcelain)" ]; then
+if [ ! -z "$(cd $ENVPATH && git status --porcelain)" ]; then
   echo "env is dirty. Please check it in."
 fi
 
@@ -36,7 +36,7 @@ export EDITOR='mvim'
 export GIT_EDITOR='vim -c start'
 
 # Add env/bin to path so our standard utils are available.
-export PATH=$ENV/bin:$PATH
+export PATH=$ENVPATH/bin:$PATH
 
 # Add ~/bin to path so you can stash new things there for convenience.
 export PATH=$HOME/bin:$PATH
@@ -46,10 +46,10 @@ export PATH=$HOME/bin:$PATH
 test -s ~/.localrc && source ~/.localrc
 
 # Add my functions.
-autoload -U $ENV/functions/*(:t)
+autoload -U $ENVPATH/functions/*(:t)
 
 # Add my completions.
-fpath=($ENV/functions $fpath)
+fpath=($ENVPATH/functions $fpath)
 
 # Add zsh-completions.
 fpath=(/usr/local/share/zsh-completions $fpath)
@@ -107,7 +107,7 @@ precmd() {
 # http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
 # =============================================================================
 
-source $ENV/complex/prompt.zsh
+source $ENVPATH/complex/prompt.zsh
 
 update_prompt() {
   set_title

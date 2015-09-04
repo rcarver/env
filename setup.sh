@@ -8,14 +8,14 @@
 set -e
 
 # Set the ENV variable from where this script is located.
-ENV="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ENVPATH="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Write the location of this repo to ~/.envpath so that other scripts can find it.
-echo ~/.envpath = \"$ENV\"
-echo "$ENV" > "$HOME/.envpath"
+echo ~/.envpath = \"$ENVPATH\"
+echo "$ENVPATH" > "$HOME/.envpath"
 
 # Make sure OSX is configured nicely.
-$ENV/bin/env-osx-defaults
+$ENVPATH/bin/env-osx-defaults
 
 # Install Homebrew, a package manager for OSX we'll use to get other stuff.
 # http://brew.sh
@@ -98,7 +98,7 @@ then
 fi
 
 # Configure other systems by symlinking dotfiles from this repo.
-for source in `find "$ENV/dotfiles" -type f`
+for source in `find "$ENVPATH/dotfiles" -type f`
 do
   dest="$HOME/.`basename \"${source}\"`"
   # If it's a symblink and points to the source, we're good.
