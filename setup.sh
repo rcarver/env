@@ -49,10 +49,18 @@ then
   brew linkapps macvim
 fi
 
+# Install Vundle vim plugin manager.
 if ! test -d ~/.vim/bundle/Vundle.vim
 then
   echo Installing vundle...
   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+fi
+
+# cmake is required for YouCompleteMe vim plugin.
+if ! hash cmake 2> /dev/null
+then
+  echo Installing cmake...
+  brew install cmake
 fi
 
 # Install aws tools.
