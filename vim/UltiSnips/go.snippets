@@ -1,0 +1,19 @@
+snippet ttest "Table-based test"
+func Test${1:Class}_${2:Func}(t *testing.T) {
+	tests := []struct{
+		$3
+	}{
+		$5
+	}
+	for i, test := range tests {
+		$4
+		t.Errorf("%d $2() got %#v, want %#v", i, got, test.want)
+	}
+}
+endsnippet
+
+snippet range "Range"
+for ${1:i}, ${2:x} := range ${3:list} {
+	$4
+}
+endsnippet
