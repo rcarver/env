@@ -70,11 +70,13 @@ then
   brew install awscli
 fi
 
-# Install ctags for vim.
-if ! hash ctags 2> /dev/null
+# Install exuberant ctags for vim.
+# Check for location of install here because a default install already has
+# /usr/bin/ctags but we need to a new version.
+if ! test -x /usr/local/bin/ctags 2> /dev/null
 then
   echo Installing ctags
-  brew install ctags
+  brew install ctags-exuberant
 fi
 
 # Install ack, for searching.
