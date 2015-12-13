@@ -1,13 +1,15 @@
 snippet ttest "Table-based test"
-func Test${1:Class}_${2:Func}(t *testing.T) {
+func Test${1:Class}${2:Func}(t *testing.T) {
 	tests := []struct{
 		$3
 	}{
 		$5
 	}
-	for i, test := range tests {
+	for i, tt := range tests {
 		$4
-		t.Errorf("%d $2() got %#v, want %#v", i, got, test.want)
+		if got, want := got, tt.want; !reflect.DeepEqual(got, want) {
+			t.Errorf("%d $1.$2()\ngot  %#v\nwant %#v", i, got, want)
+		}
 	}
 }
 endsnippet
