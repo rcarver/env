@@ -14,8 +14,25 @@ func Test${1:Class}${2:Func}(t *testing.T) {
 }
 endsnippet
 
+snippet ttspew "Table-based test with spew output"
+func Test${1:Class}${2:Func}(t *testing.T) {
+	tests := []struct{
+		$3
+	}{
+		$5
+	}
+	for i, tt := range tests {
+		$4
+		if got, want := got, tt.want; !reflect.DeepEqual(got, want) {
+			t.Errorf("%d $1.$2()\ngot\n%swant\n%s", i, spew.Sdump(got), spew.Sdump(want))
+		}
+	}
+}
+endsnippet
+
 snippet range "Range"
 for ${1:i}, ${2:x} := range ${3:list} {
 	$4
 }
 endsnippet
+
