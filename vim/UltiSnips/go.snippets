@@ -1,14 +1,15 @@
 snippet ttest "Table-based test"
 func Test${1:Class}${2:Func}(t *testing.T) {
 	tests := []struct{
+		desc string
 		$3
 	}{
 		$5
 	}
-	for i, tt := range tests {
+	for _, tt := range tests {
 		$4
 		if got, want := got, tt.want; !reflect.DeepEqual(got, want) {
-			t.Errorf("%d $1.$2()\ngot  %#v\nwant %#v", i, got, want)
+			t.Errorf("%q $1.$2()\ngot  %#v\nwant %#v", tt.desc, got, want)
 		}
 	}
 }
@@ -17,6 +18,7 @@ endsnippet
 snippet ttspew "Table-based test with spew output"
 func Test${1:Class}${2:Func}(t *testing.T) {
 	tests := []struct{
+		desc string
 		$3
 	}{
 		$5
@@ -24,7 +26,7 @@ func Test${1:Class}${2:Func}(t *testing.T) {
 	for i, tt := range tests {
 		$4
 		if got, want := got, tt.want; !reflect.DeepEqual(got, want) {
-			t.Errorf("%d $1.$2()\ngot\n%swant\n%s", i, spew.Sdump(got), spew.Sdump(want))
+			t.Errorf("%q $1.$2()\ngot\n%swant\n%s", tt.desc, spew.Sdump(got), spew.Sdump(want))
 		}
 	}
 }
