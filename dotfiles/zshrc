@@ -35,6 +35,9 @@ fi
 export EDITOR='mvim'
 export GIT_EDITOR='vim -c start'
 
+# Add homebrew bins to path.
+export PATH=/usr/local/bin:$PATH
+
 # Add env/bin to path so our standard utils are available.
 export PATH=$ENVPATH/bin:$PATH
 
