@@ -44,6 +44,9 @@ export PATH=$ENVPATH/bin:$PATH
 # Add ~/bin to path so you can stash new things there for convenience.
 export PATH=$HOME/bin:$PATH
 
+# Add ~/.gotools to path for vim integration.
+export PATH=$HOME/.gotools:$PATH
+
 # Source a local config that isn't part of this environment. This can be used
 # to customize a machine, or store secret stuff that you don't want to check in.
 test -s ~/.localrc && source ~/.localrc
