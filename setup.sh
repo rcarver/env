@@ -106,6 +106,10 @@ then
   brew install zsh-completions
 fi
 
+# Ensure permissions are correct for completions
+# https://stackoverflow.com/questions/13762280/zsh-compinit-insecure-directories
+compaudit | xargs chmod g-w
+
 # Configure other systems by symlinking dotfiles from this repo.
 for source in `find "$ENVPATH/dotfiles" -type f`
 do
