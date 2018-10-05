@@ -46,7 +46,6 @@ if ! hash mvim 2> /dev/null
 then
   echo Installing macvim...
   brew install macvim --override-local-vim
-  brew linkapps macvim
 fi
 
 # Install Vundle vim plugin manager.
