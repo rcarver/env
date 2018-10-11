@@ -252,6 +252,13 @@ let g:SuperTabDefaultCompletionType = '<C-Tab>'
 " =================================================================
 " YouCompleteMe - autocomplete
 " https://github.com/Valloric/YouCompleteMe
+"
+" After installing the VIM plugin, you need to compile it:
+" https://github.com/Valloric/YouCompleteMe#mac-os-x
+"
+" cd ~/.vim/bundle/YouCompleteMe
+" ./install.py --go-completer [check other flags for other langs]
+"
 " =================================================================
 
 let g:ycm_autoclose_preview_window_after_completion = 1
