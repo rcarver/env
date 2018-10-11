@@ -110,6 +110,12 @@ then
   brew install zsh-completions
 fi
 
+if [ ! -f $HOME/.iterm2_shell_integration.zsh ]
+then
+  echo Installing iTerm2 shell integration...
+  curl -sL https://iterm2.com/shell_integration/zsh -o ~/.iterm2_shell_integration.zsh
+fi
+
 # Ensure permissions are correct for completions
 # https://stackoverflow.com/questions/13762280/zsh-compinit-insecure-directories
 compaudit | xargs chmod g-w
