@@ -117,7 +117,7 @@ if has("gui_running")
 
   " Use the best font
   if has("gui_macvim")
-    set guifont=Source\ Code\ Pro:h12
+    set guifont=Source\ Code\ Variable\ Medium:h13
     set linespace=1
     set antialias
     "set guifont=Monaco:h10
