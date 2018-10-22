@@ -337,6 +337,9 @@ let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 
+" Syntax
+let g:syntastic_go_checkers = ['go', 'golint', 'errcheck']
+
 " Run the current file
 au FileType go nmap <leader>r <Plug>(go-run)
 " Build the current file (creates no artifact)
