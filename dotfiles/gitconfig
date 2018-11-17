@@ -9,3 +9,5 @@
 	required = true
 [core]
 	excludesfile = /Users/rcarver/.gitignore
+[url "ssh://git@github.com/"]
+  insteadOf = https://github.com/
