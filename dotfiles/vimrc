@@ -31,18 +31,18 @@ Plugin 'gmarik/Vundle.vim'
 "
 
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'bling/vim-airline'
-Plugin 'ervandew/supertab'
+"Plugin 'bling/vim-airline'
+"Plugin 'ervandew/supertab'
 Plugin 'fatih/vim-go'
 Plugin 'kien/ctrlp.vim'
-Plugin 'majutsushi/tagbar'
+"Plugin 'majutsushi/tagbar'
 Plugin 'mileszs/ack.vim'
-Plugin 'Raimondi/delimitMate'
+"Plugin 'Raimondi/delimitMate'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'SirVer/ultisnips'
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()
 
