@@ -37,7 +37,7 @@ Plugin 'fatih/vim-go'
 Plugin 'kien/ctrlp.vim'
 "Plugin 'majutsushi/tagbar'
 Plugin 'mileszs/ack.vim'
-"Plugin 'Raimondi/delimitMate'
+Plugin 'Raimondi/delimitMate'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
@@ -145,6 +145,9 @@ au FileType go        setlocal noet ts=8 sw=8 sts=8
 "
 " Commands
 "
+
+" Escape+Escape clears the current search higlight.
+noremap <esc><esc> :noh<CR>
 
 " Yank to the end of a line - make Y consistent with C and D.
 noremap Y y$
