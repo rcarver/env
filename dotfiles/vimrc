@@ -362,7 +362,7 @@ au FileType go nmap gd <Plug>(go-def)
 au FileType go nmap gs <Plug>(go-def-vertical)
 
 " Show interfaces implemented by item under cursor.
-au FileType go nmap <Leader>s <Plug>(go-implements)
+au FileType go nmap <Leader>i <Plug>(go-implements)
 
 " Rename the identifier under the cursor
 " :GoRename
