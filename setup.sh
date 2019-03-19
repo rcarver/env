@@ -45,7 +45,7 @@ fi
 if ! hash mvim 2> /dev/null
 then
   echo Installing macvim...
-  brew install macvim --override-local-vim
+  brew install macvim --with-override-system-vi
 
   # Symlink the MacVim binary to `vim` so we get a newer version that's
   # compatible with all of the plugins and customizations.
