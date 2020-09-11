@@ -46,10 +46,6 @@ if ! hash mvim 2> /dev/null
 then
   echo Installing macvim...
   brew install macvim
-
-  # Symlink the MacVim binary to `vim` so we get a newer version that's
-  # compatible with all of the plugins and customizations.
-  ln -s /usr/local/bin/mvim /usr/local/bin/vim
 fi
 
 # Install Vundle vim plugin manager.
