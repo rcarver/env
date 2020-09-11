@@ -7,8 +7,8 @@ then
 fi
 
 input=$1
-output=$2 
+output="${input%.*}.gif"
 
 ffmpeg -i "${input}" videotogif%04d.png
-gifski -o "${output}" videotogif*.png
+gifski --fps 10 -o "${output}" videotogif*.png
 rm videotogif*.png
