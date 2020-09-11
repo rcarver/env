@@ -89,6 +89,14 @@ then
   brew install ack
 fi
 
+# Install git-lfs for git large files
+if ! hash git-lfs 2> /dev/null
+then
+  echo Installing git-lfs...
+  brew install git-lfs
+  git lfs install
+fi
+
 # Install jq for json parsing
 if ! hash jq 2> /dev/null
 then
