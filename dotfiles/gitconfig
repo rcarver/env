@@ -5,8 +5,8 @@
 	co = checkout
 [core]
 	excludesfile = /Users/rcarver/.gitignore
-#[url "ssh://git@github.com/"]
-#  insteadOf = https://github.com/
+[url "ssh://git@github.com/"]
+  insteadOf = https://github.com/
 [rerere]
 	enabled = true
 [filter "lfs"]
