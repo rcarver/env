@@ -1,0 +1,4 @@
+#!/bin/zsh
+# List git tags sorted correctly
+
+git tag | sort -V
