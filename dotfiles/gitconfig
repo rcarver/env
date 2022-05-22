@@ -3,6 +3,7 @@
 	email = ryan@ryancarver.com
 [alias]
 	co = checkout
+	diff-image = "!f() { cd -- \"${GIT_PREFIX:-.}\"; GIT_DIFF_IMAGE_ENABLED=1 git diff \"$@\"; }; f"
 [core]
 	excludesfile = /Users/rcarver/.gitignore
 [url "ssh://git@github.com/"]
@@ -18,3 +19,5 @@
 	defaultBranch = main
 [pull]
 	ff = only
+[diff "image"]
+	command = ~/Code/OpenSource/git-diff-image/git_diff_image
