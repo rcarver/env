@@ -178,3 +178,5 @@ if [ -f '/Users/rcarver/bin/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/rca
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/rcarver/bin/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/rcarver/bin/google-cloud-sdk/completion.zsh.inc'; fi
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/bit bit
