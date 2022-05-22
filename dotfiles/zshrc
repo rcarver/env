@@ -153,6 +153,7 @@ alias gdi='git diff-image'
 alias gc='git commit'
 alias gb='git branch'
 alias gs='git status -sb' # upgrade your git if -sb breaks for you. it's fun.
+alias wip='git commit -m "wip"'
 
 
 # golang
