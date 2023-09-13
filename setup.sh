@@ -107,6 +107,13 @@ then
   brew install jsonpp
 fi
 
+# Install xcodes for installing Xcode
+if ! hash xcodes 2> /dev/null
+then
+  echo Installing xodes...
+  brew install xodes
+fi
+
 # Install zsh-completions for general magic.
 if [ ! -d /usr/local/share/zsh-completions ]
 then
