@@ -159,6 +159,16 @@ alias gb='git branch'
 alias gs='git status -sb' # upgrade your git if -sb breaks for you. it's fun.
 alias wip='git commit -m "wip"'
 
+# python
+# =============================================================================
+
+# Configure pyenv
+if type pyenv &>/dev/null; then
+  export PYENV_ROOT="$HOME/.pyenv"
+  command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init -)"
+fi
+
 
 # golang
 # =============================================================================
