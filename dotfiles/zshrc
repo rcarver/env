@@ -180,6 +180,14 @@ export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/go/bin
 
 
+# rust
+# =============================================================================
+
+if [ -d "$HOME/.cargo" ]; then
+  . "$HOME/.cargo/env"
+fi
+
+
 # projects
 # =============================================================================
 
