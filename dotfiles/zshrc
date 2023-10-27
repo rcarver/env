@@ -58,7 +58,11 @@ autoload -U $ENVPATH/functions/*(:t)
 fpath=($ENVPATH/functions $fpath)
 
 # Add zsh-completions.
-fpath=(/usr/local/share/zsh-completions $fpath)
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+  autoload -Uz compinit
+  compinit
+fi
 
 # zsh options
 # http://linux.die.net/man/1/zshoptions
@@ -138,7 +142,7 @@ alias ll="gls -l --color"
 alias la='gls -A --color'
 
 # Colorize other common utils.
-source `brew --prefix`/etc/grc.bashrc
+#source `brew --prefix`/etc/grc.bashrc
 
 
 # git
