@@ -110,8 +110,21 @@ fi
 # Install xcodes for installing Xcode
 if ! hash xcodes 2> /dev/null
 then
-  echo Installing xodes...
-  brew install xodes
+  echo Installing xcodes...
+  brew install xcodes
+fi
+
+# Install heroku
+if ! hash heroku 2> /dev/null
+then
+  echo Installing heroku...
+  brew tap heroku/brew && brew install heroku
+fi
+
+if ! hash psql 2> /dev/null
+then
+  echo Installing postgresql...
+  brew install postgresql
 fi
 
 # Install zsh-completions for general magic.
