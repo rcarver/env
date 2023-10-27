@@ -22,7 +22,7 @@ $ENVPATH/bin/env-osx-defaults
 if ! hash brew 2> /dev/null
 then
   echo Installing homebrew...
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 # Install coreutils, providing better versions of common unix utilities.
