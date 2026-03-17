@@ -73,9 +73,7 @@ setopt COMPLETE_ALIASES
 setopt CORRECT
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_REDUCE_BLANKS
-setopt INC_APPEND_HISTORY SHARE_HISTORY
 setopt NO_LIST_BEEP
-
 
 # autocomplete
 # http://zsh.sourceforge.net/Doc/Release/Completion-System.html
