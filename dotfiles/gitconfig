@@ -12,14 +12,16 @@
 #  insteadOf = https://github.com/
 [rerere]
 	enabled = true
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
 [init]
 	defaultBranch = main
 [pull]
 	ff = only
 [diff "image"]
 	command = ~/Code/OpenSource/git-diff-image/git_diff_image
+[push]
+	autoSetupRemote = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
