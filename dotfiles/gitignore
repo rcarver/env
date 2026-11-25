@@ -3,3 +3,16 @@
 *~
 *.swp
 *.rbc
+# Per-user Claude Code state. Project-shared config (CLAUDE.md,
+# .claude/agents/, .claude/commands/, .claude/feature-owners/,
+# .claude/settings.json) belongs in repos; only local-only stuff is ignored.
+.claude/settings.local.json
+.claude/scheduled_tasks.lock
+.claude/worktrees/
+.claude/debug/
+.claude/projects/
+.claude/plans/
+
+**/.claude/.cc-writes/
+
+**/.claude/settings.local.json
