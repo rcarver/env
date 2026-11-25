@@ -208,3 +208,19 @@ if [ -f '/Users/rcarver/bin/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/rca
 if [ -f '/Users/rcarver/bin/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/rcarver/bin/google-cloud-sdk/completion.zsh.inc'; fi
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/bit bit
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+
+# bun completions
+[ -s "/Users/rcarver/.bun/_bun" ] && source "/Users/rcarver/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# Turso
+export PATH="$PATH:/Users/rcarver/.turso"
+export PATH="$HOME/.local/bin:$PATH"
