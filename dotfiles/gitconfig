@@ -4,7 +4,7 @@
 [alias]
 	co = checkout
 	diff-image = "!f() { cd -- \"${GIT_PREFIX:-.}\"; GIT_DIFF_IMAGE_ENABLED=1 git diff \"$@\"; }; f"
-	tidy = !git fetch --prune && git branch -v | grep '\\[gone\\]' | awk '{print $1}' | xargs -r git branch -d
+	sync = !git fetch --prune && git checkout main && git reset --hard origin/main && git branch -v | grep '\\[gone\\]' | awk '{print $1}' | xargs -r git branch -d
 [core]
 	excludesfile = /Users/rcarver/.gitignore
 	attributesfile = ~/.gitattributes
